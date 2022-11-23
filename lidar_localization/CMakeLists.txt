@@ -1,10 +1,10 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.0.2)
 project(lidar_localization)
 
 SET(CMAKE_BUILD_TYPE "Release")
 SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
-add_compile_options(-std=c++11)
-add_definitions(-std=c++11)
+add_compile_options(-std=c++14)
+add_definitions(-std=c++14)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
@@ -50,5 +50,5 @@ add_executable(test_frame_node src/test_frame_node.cpp ${ALL_SRCS})
 target_link_libraries(test_frame_node ${catkin_LIBRARIES} ${ALL_TARGET_LIBRARIES})
 
 add_executable(front_end_node src/front_end_node.cpp ${ALL_SRCS})
-add_dependencies(front_end_node ${catkin_EXPORTED_TARGETS} saveMap_gencpp)
+add_dependencies(front_end_node ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_generate_messages_cpp)
 target_link_libraries(front_end_node ${catkin_LIBRARIES} ${ALL_TARGET_LIBRARIES})
