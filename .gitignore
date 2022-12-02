@@ -1,4 +1,5 @@
 lidar_localization/slam_data
+setup_file/g2o
 
 *.INFO
 *.INFO.*
